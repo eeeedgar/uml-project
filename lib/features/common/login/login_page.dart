@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:uml_freelance/app/routes.dart';
 import 'package:uml_freelance/domain/cubit/auth_cubit.dart';
 import 'package:uml_freelance/domain/cubit/users_cubit.dart';
 import 'package:uml_freelance/domain/dto/user_dto.dart';
 import 'package:uml_freelance/domain/entities/user_role.dart';
 
-class RegisterPage extends StatefulWidget {
-  const RegisterPage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
-  late TextEditingController _nameController;
+class _LoginPageState extends State<LoginPage> {
   late TextEditingController _loginController;
   late TextEditingController _passwordController;
   var _role = UserRole.customer;
@@ -21,7 +21,6 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   void initState() {
     super.initState();
-    _nameController = TextEditingController();
     _loginController = TextEditingController();
     _passwordController = TextEditingController();
   }
@@ -29,7 +28,6 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   void dispose() {
     super.dispose();
-    _nameController.dispose();
     _loginController.dispose();
     _passwordController.dispose();
   }
@@ -40,15 +38,11 @@ class _RegisterPageState extends State<RegisterPage> {
     final authCubit = context.read<AuthCubit>();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Register'),
+        title: const Text('Log in'),
       ),
       body: SafeArea(
         child: Column(
           children: [
-            TextField(
-              controller: _nameController,
-              decoration: const InputDecoration(labelText: 'Name'),
-            ),
             TextField(
               controller: _loginController,
               decoration: const InputDecoration(labelText: 'Login'),
@@ -85,22 +79,35 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
       floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
-            final user = usersCubit.registerUser(UserDto(
-                name: _nameController.text,
+            final user = usersCubit.search(UserDto(
+                name: '',
                 login: _loginController.text,
                 password: _passwordController.text,
                 role: _role));
+            if (user == null) {
+              showError(context);
+              return;
+            }
             authCubit.login(user);
             switch (user.role) {
               case (UserRole.customer):
-                Navigator.of(context).pushNamed('/my_orders');
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                    routeMap[Routes.myOrders]!, (r) => false);
               case (UserRole.performer):
-                Navigator.of(context).pushNamed('/users');
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                    routeMap[Routes.availableOrders]!, (r) => false);
               case (UserRole.admin):
-                Navigator.of(context).pushNamed('/users');
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                    routeMap[Routes.users]!, (r) => false);
             }
           },
-          label: const Text('Register')),
+          label: const Text('Log in')),
     );
+  }
+
+  void showError(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+      content: Text('Invalid data'),
+    ));
   }
 }

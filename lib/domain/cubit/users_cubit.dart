@@ -12,11 +12,11 @@ class UsersCubit extends HydratedCubit<UsersState> {
 
   User registerUser(UserDto dto) {
     final user = User(
-              id: _generateId(),
-              name: dto.name,
-              password: dto.password,
-              login: dto.login,
-              role: dto.role);
+        id: _generateId(),
+        name: dto.name,
+        password: dto.password,
+        login: dto.login,
+        role: dto.role);
     emit(state.copyWith(
       users: List.of(state.users)
         ..add(
@@ -30,6 +30,21 @@ class UsersCubit extends HydratedCubit<UsersState> {
     emit(state.copyWith(
       users: List.of(state.users)..removeWhere((u) => u.id == id),
     ));
+  }
+
+  User? search(UserDto dto) {
+    try {
+      return state.users.firstWhere((user) =>
+          user.role == dto.role &&
+          user.login == dto.login &&
+          user.password == dto.password);
+    } on Error {
+      return null;
+    }
+  }
+
+  bool isUnique(UserDto dto) {
+    return state.users.where((u) => u.login == dto.login).isEmpty;
   }
 
   String _generateId() {

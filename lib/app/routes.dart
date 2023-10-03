@@ -1,0 +1,31 @@
+enum Routes {
+  start,
+  register,
+  login,
+  users,
+  myOrders,
+  createOrder,
+  availableOrders,
+  myOrder,
+  order,
+  myTakenOrders,
+  myOrdersOnReview,
+  solutions,
+  complaints,
+}
+
+const routeMap = <Routes, String>{
+  Routes.start: '/start',
+  Routes.register: '/register',
+  Routes.login: '/login',
+  Routes.users: '/users',
+  Routes.myOrders: '/my_orders',
+  Routes.createOrder: '/create_order',
+  Routes.availableOrders: '/created_orders',
+  Routes.myOrder: '/my_order',
+  Routes.order: '/order',
+  Routes.myTakenOrders: '/my_taken_orders',
+  Routes.myOrdersOnReview: '/my_orders_on_review',
+  Routes.solutions: '/solutions',
+  Routes.complaints: '/complaints',
+};

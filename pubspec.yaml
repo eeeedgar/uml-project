@@ -17,6 +17,7 @@ dependencies:
   json_annotation: ^4.8.1
   injectable: ^2.3.0
   json_serializable: ^6.7.1
+  flutter_slidable: ^3.0.0
 
 dev_dependencies:
   flutter_test:

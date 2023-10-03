@@ -22,6 +22,7 @@ Order _$OrderFromJson(Map<String, dynamic> json) {
 mixin _$Order {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
   String get customerId => throw _privateConstructorUsedError;
   String? get currentPerformerId => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
@@ -40,6 +41,7 @@ abstract class $OrderCopyWith<$Res> {
   $Res call(
       {String id,
       String title,
+      String description,
       String customerId,
       String? currentPerformerId,
       int price,
@@ -61,6 +63,7 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
   $Res call({
     Object? id = null,
     Object? title = null,
+    Object? description = null,
     Object? customerId = null,
     Object? currentPerformerId = freezed,
     Object? price = null,
@@ -74,6 +77,10 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String,
       customerId: null == customerId
           ? _value.customerId
@@ -105,6 +112,7 @@ abstract class _$$OrderImplCopyWith<$Res> implements $OrderCopyWith<$Res> {
   $Res call(
       {String id,
       String title,
+      String description,
       String customerId,
       String? currentPerformerId,
       int price,
@@ -124,6 +132,7 @@ class __$$OrderImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? title = null,
+    Object? description = null,
     Object? customerId = null,
     Object? currentPerformerId = freezed,
     Object? price = null,
@@ -137,6 +146,10 @@ class __$$OrderImplCopyWithImpl<$Res>
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String,
       customerId: null == customerId
           ? _value.customerId
@@ -164,6 +177,7 @@ class _$OrderImpl implements _Order {
   _$OrderImpl(
       {required this.id,
       required this.title,
+      required this.description,
       required this.customerId,
       this.currentPerformerId,
       required this.price,
@@ -177,6 +191,8 @@ class _$OrderImpl implements _Order {
   @override
   final String title;
   @override
+  final String description;
+  @override
   final String customerId;
   @override
   final String? currentPerformerId;
@@ -187,7 +203,7 @@ class _$OrderImpl implements _Order {
 
   @override
   String toString() {
-    return 'Order(id: $id, title: $title, customerId: $customerId, currentPerformerId: $currentPerformerId, price: $price, status: $status)';
+    return 'Order(id: $id, title: $title, description: $description, customerId: $customerId, currentPerformerId: $currentPerformerId, price: $price, status: $status)';
   }
 
   @override
@@ -197,6 +213,8 @@ class _$OrderImpl implements _Order {
             other is _$OrderImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.customerId, customerId) ||
                 other.customerId == customerId) &&
             (identical(other.currentPerformerId, currentPerformerId) ||
@@ -207,8 +225,8 @@ class _$OrderImpl implements _Order {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, title, customerId, currentPerformerId, price, status);
+  int get hashCode => Object.hash(runtimeType, id, title, description,
+      customerId, currentPerformerId, price, status);
 
   @JsonKey(ignore: true)
   @override
@@ -228,6 +246,7 @@ abstract class _Order implements Order {
   factory _Order(
       {required final String id,
       required final String title,
+      required final String description,
       required final String customerId,
       final String? currentPerformerId,
       required final int price,
@@ -239,6 +258,8 @@ abstract class _Order implements Order {
   String get id;
   @override
   String get title;
+  @override
+  String get description;
   @override
   String get customerId;
   @override

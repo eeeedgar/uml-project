@@ -10,6 +10,7 @@ class Order with _$Order {
   factory Order({
     required final String id,
     required final String title,
+    required final String description,
     required final String customerId,
     final String? currentPerformerId,
     required final int price,

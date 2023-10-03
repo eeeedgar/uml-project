@@ -23,6 +23,8 @@ mixin _$Solution {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get performerId => throw _privateConstructorUsedError;
+  String get orderId => throw _privateConstructorUsedError;
+  bool get viewed => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +37,12 @@ abstract class $SolutionCopyWith<$Res> {
   factory $SolutionCopyWith(Solution value, $Res Function(Solution) then) =
       _$SolutionCopyWithImpl<$Res, Solution>;
   @useResult
-  $Res call({String id, String title, String performerId});
+  $Res call(
+      {String id,
+      String title,
+      String performerId,
+      String orderId,
+      bool viewed});
 }
 
 /// @nodoc
@@ -54,6 +61,8 @@ class _$SolutionCopyWithImpl<$Res, $Val extends Solution>
     Object? id = null,
     Object? title = null,
     Object? performerId = null,
+    Object? orderId = null,
+    Object? viewed = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -68,6 +77,14 @@ class _$SolutionCopyWithImpl<$Res, $Val extends Solution>
           ? _value.performerId
           : performerId // ignore: cast_nullable_to_non_nullable
               as String,
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String,
+      viewed: null == viewed
+          ? _value.viewed
+          : viewed // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -80,7 +97,12 @@ abstract class _$$SolutionImplCopyWith<$Res>
       __$$SolutionImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String title, String performerId});
+  $Res call(
+      {String id,
+      String title,
+      String performerId,
+      String orderId,
+      bool viewed});
 }
 
 /// @nodoc
@@ -97,6 +119,8 @@ class __$$SolutionImplCopyWithImpl<$Res>
     Object? id = null,
     Object? title = null,
     Object? performerId = null,
+    Object? orderId = null,
+    Object? viewed = null,
   }) {
     return _then(_$SolutionImpl(
       id: null == id
@@ -111,6 +135,14 @@ class __$$SolutionImplCopyWithImpl<$Res>
           ? _value.performerId
           : performerId // ignore: cast_nullable_to_non_nullable
               as String,
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String,
+      viewed: null == viewed
+          ? _value.viewed
+          : viewed // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -119,7 +151,11 @@ class __$$SolutionImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$SolutionImpl implements _Solution {
   _$SolutionImpl(
-      {required this.id, required this.title, required this.performerId});
+      {required this.id,
+      required this.title,
+      required this.performerId,
+      required this.orderId,
+      this.viewed = false});
 
   factory _$SolutionImpl.fromJson(Map<String, dynamic> json) =>
       _$$SolutionImplFromJson(json);
@@ -130,10 +166,15 @@ class _$SolutionImpl implements _Solution {
   final String title;
   @override
   final String performerId;
+  @override
+  final String orderId;
+  @override
+  @JsonKey()
+  final bool viewed;
 
   @override
   String toString() {
-    return 'Solution(id: $id, title: $title, performerId: $performerId)';
+    return 'Solution(id: $id, title: $title, performerId: $performerId, orderId: $orderId, viewed: $viewed)';
   }
 
   @override
@@ -144,12 +185,15 @@ class _$SolutionImpl implements _Solution {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.performerId, performerId) ||
-                other.performerId == performerId));
+                other.performerId == performerId) &&
+            (identical(other.orderId, orderId) || other.orderId == orderId) &&
+            (identical(other.viewed, viewed) || other.viewed == viewed));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, performerId);
+  int get hashCode =>
+      Object.hash(runtimeType, id, title, performerId, orderId, viewed);
 
   @JsonKey(ignore: true)
   @override
@@ -169,7 +213,9 @@ abstract class _Solution implements Solution {
   factory _Solution(
       {required final String id,
       required final String title,
-      required final String performerId}) = _$SolutionImpl;
+      required final String performerId,
+      required final String orderId,
+      final bool viewed}) = _$SolutionImpl;
 
   factory _Solution.fromJson(Map<String, dynamic> json) =
       _$SolutionImpl.fromJson;
@@ -180,6 +226,10 @@ abstract class _Solution implements Solution {
   String get title;
   @override
   String get performerId;
+  @override
+  String get orderId;
+  @override
+  bool get viewed;
   @override
   @JsonKey(ignore: true)
   _$$SolutionImplCopyWith<_$SolutionImpl> get copyWith =>

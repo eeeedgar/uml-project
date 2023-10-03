@@ -11,6 +11,8 @@ _$SolutionImpl _$$SolutionImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       title: json['title'] as String,
       performerId: json['performerId'] as String,
+      orderId: json['orderId'] as String,
+      viewed: json['viewed'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$SolutionImplToJson(_$SolutionImpl instance) =>
@@ -18,4 +20,6 @@ Map<String, dynamic> _$$SolutionImplToJson(_$SolutionImpl instance) =>
       'id': instance.id,
       'title': instance.title,
       'performerId': instance.performerId,
+      'orderId': instance.orderId,
+      'viewed': instance.viewed,
     };

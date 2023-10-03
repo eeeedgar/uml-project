@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uml_freelance/domain/cubit/auth_cubit.dart';
 import 'package:uml_freelance/domain/cubit/orders_cubit.dart';
 import 'package:uml_freelance/domain/dto/order_dto.dart';
+import 'package:uml_freelance/view/widgets/appbar.dart';
 
 class CreateOrderPage extends StatefulWidget {
   const CreateOrderPage({super.key});
@@ -37,8 +38,8 @@ class _CreateOrderPageState extends State<CreateOrderPage> {
     final ordersCubit = context.read<OrdersCubit>();
     final authCubit = context.read<AuthCubit>();
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Create order'),
+      appBar: const FreelanceAppBar(
+        title: Text('Create order'),
       ),
       body: SafeArea(
         child: Column(
