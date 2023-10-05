@@ -72,6 +72,7 @@ class _AllSolutionsPageState extends State<AllSolutionsPage> {
                     SlidableAction(
                       onPressed: (context) {
                         decline(context, sol, ord);
+                        setState(() {});
                       },
                       backgroundColor: Colors.red,
                       foregroundColor: Colors.white,
@@ -88,6 +89,7 @@ class _AllSolutionsPageState extends State<AllSolutionsPage> {
                     SlidableAction(
                       onPressed: (context) {
                         acceptSolution(context, sol, ord);
+                        setState(() {});
                       },
                       backgroundColor: Colors.green,
                       foregroundColor: Colors.white,

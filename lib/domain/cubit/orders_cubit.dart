@@ -109,6 +109,7 @@ class OrdersCubit extends HydratedCubit<OrdersState> {
     final order = state.orders.firstWhere((element) => element.id == orderId);
     final newOrder = _copyOrderWithStatus(
       order,
+      currentPerformerId: 'x',
       status: OrderStatus.created,
     );
     _updateOrder(newOrder);

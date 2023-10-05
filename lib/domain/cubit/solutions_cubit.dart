@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:uml_freelance/domain/entities/order.dart';
 import 'package:uml_freelance/domain/entities/solution.dart';
 import 'package:uml_freelance/domain/entities/user.dart';
 

@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:uml_freelance/domain/cubit/auth_cubit.dart';
 import 'package:uml_freelance/domain/cubit/complaints_cubit.dart';
 import 'package:uml_freelance/domain/cubit/orders_cubit.dart';
-import 'package:uml_freelance/domain/cubit/solutions_cubit.dart';
 import 'package:uml_freelance/domain/entities/complaint.dart';
 import 'package:uml_freelance/domain/entities/complaint_status.dart';
 import 'package:uml_freelance/domain/entities/order.dart';
-import 'package:uml_freelance/domain/entities/solution.dart';
 import 'package:uml_freelance/view/widgets/appbar.dart';
 
 class ComplaintsPage extends StatefulWidget {
